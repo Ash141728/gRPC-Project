@@ -1,0 +1,27 @@
+syntax ="proto3";
+package com.BharatKaData;
+option java_multiple_files=true;
+
+message PayLoadType{
+  int32 personId=1;
+  string personName=2;
+  string personAddress=3;
+}
+message Pagenation{
+  int32 pageSize=1;
+  int32 pageNumber=2;
+}
+message Notification{
+  int32 notificationId=1;
+  PayLoadType payLoadType=3;
+}
+message Empty{
+
+}
+message NotificationList {
+  repeated Notification notifications = 1;
+}
+service FacebookDataAccess
+{
+  rpc getAllNotification(Pagenation) returns(NotificationList){}
+}
